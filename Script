@@ -1,0 +1,18 @@
+pipeline {
+agent any
+stages {
+stage('Clone Repository') {
+steps {
+git branch: 'main', url: 'https://github.com/Sarvednyamhatre/exp1.git' // Replace with your actual GitHub repository URL
+}
+}
+stage('Deploy to XAMPP') {
+steps {
+script {
+// Assuming XAMPP is installed at C:\xampp\htdocs on a Windows server
+bat "xcopy /Y /I /E /F /C *.html C:\\xampp\\htdocs\\"
+}
+}
+}
+}
+}
